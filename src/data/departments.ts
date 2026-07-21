@@ -1,30 +1,37 @@
 import type { Dept, DeptMeta, DeptResources } from "../types";
 
 export const DEPT_META: Record<Dept, DeptMeta> = {
+  "General Resources": {
+    color: "#52565E",
+    icon: "📦",
+    badge: "GR",
+    tagline: "Converting individual applicants into confirmed volunteer exchanges",
+  },
+
   "Incoming Global Volunteer B2C": {
     color: "#F85A40",
-    icon: "🌍",
-    badge: "iGV",
+    icon: "🎒",
+    badge: "iGV\nB2C",
     tagline: "Converting individual applicants into confirmed volunteer exchanges",
   },
 
   "Incoming Global Volunteer B2B": {
     color: "#F85A40",
-    icon: "🏢",
-    badge: "iGV",
+    icon: "🤝",
+    badge: "iGV\nB2B",
     tagline: "Partnering with organizations to host global volunteers",
   },
 
   "Incoming Global Talent": {
     color: "#0CB9C1",
-    icon: "💼",
+    icon: "🎯",
     badge: "iGT",
     tagline: "Recruiting international talent for local opportunities",
   },
 
   "Outgoing Global Volunteer": {
     color: "#F85A40",
-    icon: "✈️",
+    icon: "🏖️",
     badge: "oGV",
     tagline: "Sending members on volunteer exchange experiences abroad",
   },
@@ -52,30 +59,37 @@ export const DEPT_META: Record<Dept, DeptMeta> = {
 
   "Engagement With AIESEC & Public Relations": {
     color: "#E6A700",
-    icon: "🤝",
-    badge: "EwA",
+    icon: "🏆",
+    badge: "EwA\n&PR",
     tagline: "Stakeholder engagement, PR & AIESEC network relations",
   },
 
   "Membership Experience": {
     color: "#7552CC",
-    icon: "⭐",
-    badge: "MXP",
+    icon: "🌟",
+    badge: "MxP",
     tagline: "Member journey, culture & retention",
   },
 
   "Finance & Legalities": {
     color: "#00c16e",
-    icon: "📊",
+    icon: "💰",
     badge: "F&L",
     tagline: "Financial management, compliance & legal governance",
   },
 
-  "Its Great To Be An LCP": {
+  "Board Of Presidents": {
     color: "#037EF3",
-    icon: "👑",
-    badge: "LCP",
+    icon: "🎖️",
+    badge: "BoP",
     tagline: "Leadership development & LCP excellence framework",
+  },
+
+  "Information Management": {
+    color: "#52565E",
+    icon: "💻",
+    badge: "IM",
+    tagline: "Converting individual applicants into confirmed volunteer exchanges",
   },
 };
 

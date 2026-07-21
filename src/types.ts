@@ -1,4 +1,5 @@
 export type Dept =
+  | "General Resources"
   | "Incoming Global Volunteer B2C"
   | "Incoming Global Volunteer B2B"
   | "Incoming Global Talent"
@@ -9,23 +10,26 @@ export type Dept =
   | "Engagement With AIESEC & Public Relations"
   | "Membership Experience"
   | "Finance & Legalities"
-  | "Its Great To Be An LCP";
+  | "Board Of Presidents"
+  | "Information Management";
 
 // Single ordered list — every page that needs "all departments"
 // (the directory grid, nav, etc.) reads from this instead of
 // re-typing the array in each component.
 export const ALL_DEPARTMENTS: Dept[] = [
-  "Incoming Global Volunteer B2C",
-  "Incoming Global Volunteer B2B",
-  "Incoming Global Talent",
-  "Outgoing Global Volunteer",
-  "Outgoing Global Talent",
-  "Outgoing Global Teacher",
-  "Marketing",
-  "Engagement With AIESEC & Public Relations",
-  "Membership Experience",
-  "Finance & Legalities",
-  "Its Great To Be An LCP",
+    "General Resources",
+    "Incoming Global Volunteer B2C",
+    "Incoming Global Volunteer B2B",
+    "Incoming Global Talent",
+    "Outgoing Global Volunteer",
+    "Outgoing Global Talent",
+    "Outgoing Global Teacher",
+    "Marketing",
+    "Engagement With AIESEC & Public Relations",
+    "Membership Experience",
+    "Finance & Legalities",
+    "Board Of Presidents",
+    "Information Management",
 ];
 
 export interface DeptMeta {
