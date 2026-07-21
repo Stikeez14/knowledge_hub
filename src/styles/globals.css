@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #000000;
+  --surface: #141720;
+  --surface-hover: #1c2030;
+  --border: #252b3b;
+  --border-hover: #3a4258;
+
+  --text-primary: #eef1ff;
+  --text-secondary: #a8b0cc;
+  --text-muted: #5a6380;
+
+  --brand: #037ef3;
+  --success: #00c9a7;
+  --danger: #ff5c7a;
+  --warning: #ffb547;
+  --violet: #c47aff;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+}
+
+/* ----------------------------------------------------------------
+   Interactive card: every clickable card in the app uses this one
+   class instead of a bespoke onMouseEnter/onMouseLeave handler.
+   Set --accent inline per-instance to theme an individual card
+   (e.g. a department's brand colour); it falls back to --border-hover.
+   ---------------------------------------------------------------- */
+.card-interactive {
+  transition:
+          background-color .2s ease,
+          border-color .2s ease,
+          transform .15s ease;
+}
+
+.card-interactive:hover,
+.card-interactive:focus-visible {
+  transform: translateY(-2px);
+  background: var(--dept-color);
+  border-color: var(--dept-color);
+}
+
+/* Department name + emoji */
+
+.card-interactive:hover .dept-title,
+.card-interactive:focus-visible .dept-title {
+  color: white !important;
+}
+
+/* Badge */
+
+.card-interactive:hover .dept-badge,
+.card-interactive:focus-visible .dept-badge {
+  background: white !important;
+  color: var(--dept-color) !important;
+}
+
+.link-accent {
+  color: var(--accent, var(--brand));
+  transition: opacity 0.15s ease;
+}
+.link-accent:hover {
+  opacity: 0.8;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
