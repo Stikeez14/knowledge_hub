@@ -129,7 +129,7 @@ function DeptCard({
 
 export function Areas({ onNavigate }: DepartmentsPageProps) {
     return (
-        <main className="relative overflow-hidden max-w-[36rem] md:max-w-6xl mx-auto px-5 pt-5 pb-40">
+        <main className="relative overflow-hidden max-w-[36rem] md:max-w-6xl mx-auto px-5 pt-5 pb-36">
             <div className="relative flex flex-col items-center">
                 <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white text-center">
                     Choose Your Area Of Interest:

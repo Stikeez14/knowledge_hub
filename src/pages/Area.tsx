@@ -280,7 +280,7 @@ export function Area({ dept, onNavigate }: DepartmentPageProps) {
   }, [topics, startIndex]);
 
   return (
-      <main className="relative overflow-hidden max-w-[36rem] md:max-w-6xl mx-auto px-5 pt-5 pb-40">
+      <main className="relative overflow-hidden max-w-[36rem] md:max-w-6xl mx-auto px-5 pt-5 pb-36">
         {/* Department-colored fog */}
         <div
             className="pointer-events-none absolute -inset-x-40 -inset-y-36"
