@@ -5,7 +5,7 @@ interface HomePageProps {
   onNavigate: (p: Page) => void;
 }
 
-export function HomePage({ onNavigate }: HomePageProps) {
+export function Home({ onNavigate }: HomePageProps) {
   return (
       <main className="relative flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-5 py-16 text-center overflow-hidden">
           <div

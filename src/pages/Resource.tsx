@@ -33,7 +33,7 @@ const ArrowIcon = () => (
   </svg>
 );
 
-export function ResourcesPage({ dept }: ResourcesPageProps) {
+export function Resource({ dept }: ResourcesPageProps) {
   const meta = DEPT_META[dept];
   const links = RESOURCES[dept];
 

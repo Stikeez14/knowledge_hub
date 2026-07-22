@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./styles/globals.css";
 import { NavBar } from "./components/NavBar";
-import { HomePage } from "./pages/HomePage";
+import { Home } from "./pages/Home.tsx";
 import { Dashboard } from "./pages/Dashboard.tsx";
-import { DepartmentsPage } from "./pages/DepartmentsPage";
-import { DepartmentPage } from "./pages/DepartmentPage";
-import { ResourcesPage } from "./pages/ResourcesPage";
-import { PracticePage } from "./pages/PracticePage";
+import { Areas } from "./pages/Areas.tsx";
+import { Area } from "./pages/Area.tsx";
+import { Resource } from "./pages/Resource.tsx";
+import { Practice } from "./pages/Practice.tsx";
 import type { Page } from "./types";
 
 export default function App() {
@@ -19,17 +19,17 @@ export default function App() {
   return (
     <div className="min-h-screen bg-bg">
       <NavBar page={page} onBack={goBack} />
-      {page === "home" && <HomePage onNavigate={navigate} />}
+      {page === "home" && <Home onNavigate={navigate} />}
       {page === "about" && <Dashboard />}
-      {page === "departments" && <DepartmentsPage onNavigate={navigate} />}
+      {page === "departments" && <Areas onNavigate={navigate} />}
       {typeof page === "object" && page.view === "dept" && (
-        <DepartmentPage dept={page.dept} onNavigate={navigate} />
+        <Area dept={page.dept} onNavigate={navigate} />
       )}
       {typeof page === "object" && page.view === "resources" && (
-        <ResourcesPage dept={page.dept} />
+        <Resource dept={page.dept} />
       )}
       {typeof page === "object" && page.view === "practice" && (
-        <PracticePage dept={page.dept} onNavigate={navigate} />
+        <Practice dept={page.dept} onNavigate={navigate} />
       )}
     </div>
   );

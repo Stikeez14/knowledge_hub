@@ -17,7 +17,7 @@ function isOptionCorrect(q: Question, opt: string): boolean {
   return opt === q.answer;
 }
 
-export function PracticeQuestion({ q, index, total, onAnswer }: PracticeQuestionProps) {
+export function Question({ q, index, total, onAnswer }: PracticeQuestionProps) {
   const [selected, setSelected] = useState<string | null>(null);
   const [fillInput, setFillInput] = useState("");
   const [revealed, setRevealed] = useState(false);

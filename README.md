@@ -18,13 +18,13 @@ src/
     InteractiveCard.tsx     one card component used everywhere instead of
                             copy-pasted onMouseEnter/onMouseLeave pairs
   pages/
-    HomePage.tsx
+    Home.tsx
     Dashboard.tsx
-    DepartmentsPage.tsx
-    DepartmentPage.tsx
-    ResourcesPage.tsx
-    PracticePage.tsx
-    PracticeQuestion.tsx
+    Areas.tsx
+    Area.tsx
+    Resource.tsx
+    Practice.tsx
+    Question.tsx
   styles/globals.css        CSS variables + the .card-interactive hover rule
   App.tsx                   routing only — no page markup lives here anymore
 tailwind.config.js
@@ -59,7 +59,7 @@ tailwind.config.js
   defined once in `tailwind.config.js`, instead of being retyped as raw
   hex in dozens of `style={{ }}` props.
 - On the home page, the logo and headline now sit in a shared
-  fixed-width column (`BRAND_BLOCK_WIDTH` in `HomePage.tsx`), so the
+  fixed-width column (`BRAND_BLOCK_WIDTH` in `Home.tsx`), so the
   title wraps to the same width as the logo above it instead of running
   wider — this was a specific request buried in the old file's comments.
 - Added `Fraunces` as a display serif for headings via `globals.css`

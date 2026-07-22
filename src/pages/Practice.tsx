@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Tag } from "../components/Tag";
-import { PracticeQuestion } from "./PracticeQuestion";
+import { Question } from "./Question.tsx";
 import { DEPT_META } from "../data/departments";
 import { QUESTIONS } from "../data/questions";
 import type { Dept, Page } from "../types";
@@ -16,7 +16,7 @@ function resultCopy(pct: number) {
   return { emoji: "📖", color: "#FF5C7A", text: "Keep studying the resources and give it another shot." };
 }
 
-export function PracticePage({ dept, onNavigate }: PracticePageProps) {
+export function Practice({ dept, onNavigate }: PracticePageProps) {
   const meta = DEPT_META[dept];
   const questions = QUESTIONS[dept];
   const [current, setCurrent] = useState(0);
@@ -74,7 +74,7 @@ export function PracticePage({ dept, onNavigate }: PracticePageProps) {
           </div>
         </div>
       ) : (
-        <PracticeQuestion
+        <Question
           key={current}
           q={questions[current]}
           index={current}

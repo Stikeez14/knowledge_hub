@@ -1,5 +1,5 @@
 export type Dept =
-  | "General Resources"
+  | "General"
   | "Incoming Global Volunteer B2C"
   | "Incoming Global Volunteer B2B"
   | "Incoming Global Talent"
@@ -17,7 +17,7 @@ export type Dept =
 // (the directory grid, nav, etc.) reads from this instead of
 // re-typing the array in each component.
 export const ALL_DEPARTMENTS: Dept[] = [
-    "General Resources",
+    "General",
     "Incoming Global Volunteer B2C",
     "Incoming Global Volunteer B2B",
     "Incoming Global Talent",

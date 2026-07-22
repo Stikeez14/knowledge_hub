@@ -9,7 +9,6 @@ interface NavBarProps {
 // Shared width — reused by the home page's title block and buttons so
 // everything lines up to the same column width as the logo.
 export const BRAND_WIDTH = "w-52"; // Logo
-export const CONTENT_WIDTH = "max-w-[34rem] w-full";
 
 export function NavBar({ page, onBack }: NavBarProps) {
   const isHome = page === "home";

@@ -8,7 +8,7 @@ interface DepartmentPageProps {
   onNavigate: (p: Page) => void;
 }
 
-export function DepartmentPage({ dept, onNavigate }: DepartmentPageProps) {
+export function Area({ dept, onNavigate }: DepartmentPageProps) {
   const meta = DEPT_META[dept];
 
   return (

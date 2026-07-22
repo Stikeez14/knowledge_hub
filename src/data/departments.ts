@@ -1,10 +1,10 @@
 import type { Dept, DeptMeta, DeptResources } from "../types";
 
 export const DEPT_META: Record<Dept, DeptMeta> = {
-  "General Resources": {
+  "General": {
     color: "#52565E",
     icon: "📦",
-    badge: "GR",
+    badge: "GN",
     tagline: "Converting individual applicants into confirmed volunteer exchanges",
   },
 
