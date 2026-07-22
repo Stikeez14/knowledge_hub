@@ -1,4 +1,4 @@
-import { Tag } from "../components/Tag";
+import type { CSSProperties, ReactNode } from "react";
 import { InteractiveCard } from "../components/InteractiveCard";
 import { DEPT_META } from "../data/departments";
 import type { Dept, Page } from "../types";
@@ -8,60 +8,162 @@ interface DepartmentPageProps {
   onNavigate: (p: Page) => void;
 }
 
+const NORMAL_CARD_HEIGHT_PX = 96;
+const QUICK_TOPIC_HEIGHT_PX = NORMAL_CARD_HEIGHT_PX / 2 - 6;
+
+const PLACEHOLDER_TOPICS = [
+  "What is this department responsible for?",
+  "Key terms you should know",
+  "How this team fits into the LC",
+  "Common mistakes to avoid",
+  "Who to contact for help",
+  "Where to find past reports",
+];
+
+function AreaCard({
+                    title,
+                    height,
+                    color,
+                    onClick,
+                  }: {
+  title: ReactNode;
+  height: number;
+  color: string;
+  onClick?: () => void;
+}) {
+  return (
+      <InteractiveCard
+          onClick={onClick}
+          className="group p-0 overflow-hidden rounded-xl transition-colors duration-150 hover:!bg-[var(--dept-color)]"
+          style={
+            {
+              "--dept-color": color,
+              backgroundColor: `color-mix(in srgb, ${color} 14%, #141414)`,
+              height,
+            } as CSSProperties
+          }
+      >
+        <div className="flex h-full items-center justify-center px-6">
+        <span className="text-center font-semibold leading-snug text-white">
+          {title}
+        </span>
+        </div>
+      </InteractiveCard>
+  );
+}
+
 export function Area({ dept, onNavigate }: DepartmentPageProps) {
   const meta = DEPT_META[dept];
 
   return (
-    <main className="max-w-2xl mx-auto px-5 py-14">
-      <div className="flex items-center gap-3 mb-8">
+      <main className="relative overflow-hidden max-w-[36rem] md:max-w-6xl mx-auto px-5 pt-5 pb-40">
         <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
-          style={{ background: `${meta.color}1A` }}
-        >
-          {meta.icon}
+            className="pointer-events-none absolute -inset-x-40 -inset-y-36"
+            style={{
+              background: `radial-gradient(ellipse at center,
+            color-mix(in srgb, ${meta.color} 20%, transparent) 0%,
+            color-mix(in srgb, ${meta.color} 20%, transparent) 15%,
+            color-mix(in srgb, ${meta.color} 5%, transparent) 45%,
+            transparent 80%)`,
+            }}
+            aria-hidden
+        />
+
+        <div className="relative">
+          <div className="flex flex-col items-center mb-10">
+            <h1 className="mt-4 flex items-center justify-center gap-3 text-4xl font-extrabold tracking-tight text-center text-white">
+              <span>{dept}</span>
+              <span className="text-4xl leading-none">{meta.icon}</span>
+            </h1>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* QUICK TOPICS */}
+            <div className="flex flex-col gap-3">
+              <div className="text-center text-sm font-semibold text-muted uppercase tracking-wide mb-1">
+                Quick topics
+              </div>
+
+              {PLACEHOLDER_TOPICS.map((topic) => (
+                  <AreaCard
+                      key={topic}
+                      title={
+                        <span className="text-sm">
+                    {topic}
+                  </span>
+                      }
+                      height={QUICK_TOPIC_HEIGHT_PX}
+                      color={meta.color}
+                  />
+              ))}
+            </div>
+            {/* RESOURCES */}
+            <div className="flex flex-col gap-3">
+              <div className="text-center text-sm font-semibold text-muted uppercase tracking-wide mb-1">
+                Resources
+              </div>
+
+              <AreaCard
+                  title={
+                    <>
+                      Google
+                      <br />
+                      Drive
+                    </>
+                  }
+                  height={NORMAL_CARD_HEIGHT_PX}
+                  color={meta.color}
+                  onClick={() => window.open("https://drive.google.com", "_blank")}
+              />
+
+              <AreaCard
+                  title={
+                    <>
+                      Google
+                      <br />
+                      Sheet
+                    </>
+                  }
+                  height={NORMAL_CARD_HEIGHT_PX}
+                  color={meta.color}
+                  onClick={() => window.open("https://sheets.google.com", "_blank")}
+              />
+            </div>
+
+            {/* PRACTICE */}
+            <div className="flex flex-col gap-3">
+              <div className="text-center text-sm font-semibold text-muted uppercase tracking-wide mb-1">
+                Practice
+              </div>
+
+              <AreaCard
+                  title={
+                    <>
+                      Learn By Reading
+                      <br />
+                      Knowledge Cards
+                    </>
+                  }
+                  height={NORMAL_CARD_HEIGHT_PX}
+                  color={meta.color}
+                  onClick={() => onNavigate({ dept, view: "practice" })}
+              />
+
+              <AreaCard
+                  title={
+                    <>
+                      Test Your Knowledge
+                      <br />
+                      With A Quiz
+                    </>
+                  }
+                  height={NORMAL_CARD_HEIGHT_PX}
+                  color={meta.color}
+                  onClick={() => onNavigate({ dept, view: "quiz" })}
+              />
+            </div>
+          </div>
         </div>
-        <div>
-          <Tag label="Department" color={meta.color} />
-          <h1 className="text-3xl font-extrabold tracking-tight mt-1 text-ink">{dept}</h1>
-        </div>
-      </div>
-
-      <p className="text-sm leading-relaxed mb-12 text-muted">
-        {meta.tagline}. Access your team's curated resources or test your
-        knowledge with interactive practice sessions.
-      </p>
-
-      <div className="grid sm:grid-cols-2 gap-5">
-        <InteractiveCard accent="#5B8FFF" onClick={() => onNavigate({ dept, view: "resources" })} className="p-7">
-          <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-5 bg-[#5B8FFF1A]">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 5h12M4 10h8M4 15h10" stroke="#5B8FFF" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </div>
-          <div className="font-bold text-base mb-1 text-ink">Resources</div>
-          <div className="text-xs leading-relaxed text-subtle">
-            Links to guides, templates, policies and department materials.
-          </div>
-          <div className="mt-6 text-xs font-semibold text-[#5B8FFF]">View resources →</div>
-        </InteractiveCard>
-
-        <InteractiveCard accent={meta.color} onClick={() => onNavigate({ dept, view: "practice" })} className="p-7">
-          <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style={{ background: `${meta.color}1A` }}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M10 3a7 7 0 100 14A7 7 0 0010 3z" stroke={meta.color} strokeWidth="1.5" />
-              <path d="M10 8v2.5l2 1.5" stroke={meta.color} strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </div>
-          <div className="font-bold text-base mb-1 text-ink">Practice knowledge</div>
-          <div className="text-xs leading-relaxed text-subtle">
-            Learning cards and quizzes with multiple choice, true/false, and
-            fill-in-the-blank.
-          </div>
-          <div className="mt-6 text-xs font-semibold" style={{ color: meta.color }}>
-            Start practicing →
-          </div>
-        </InteractiveCard>
-      </div>
-    </main>
+      </main>
   );
 }

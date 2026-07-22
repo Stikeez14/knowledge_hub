@@ -36,7 +36,6 @@ export interface DeptMeta {
   color: string;
   icon: string;
   badge: string;
-  tagline: string;
 }
 
 export interface DeptResources {
